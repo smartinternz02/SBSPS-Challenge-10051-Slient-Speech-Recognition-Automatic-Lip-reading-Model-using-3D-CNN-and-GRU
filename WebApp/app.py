@@ -16,10 +16,7 @@ import plotly.express as px
 
 from utils import load_video, num_to_char 
 
-
-from streamlit_extras.grid import grid  
 from streamlit_option_menu import option_menu 
-from streamlit_extras.add_vertical_space import add_vertical_space 
 
 from backend import watson_speech_prediction 
 
@@ -110,11 +107,11 @@ elif navbar == "LipNet Model":
     """, unsafe_allow_html = True)   
     st.sidebar.warning("Hence it's reccomended to use provided dataset for evaluation")  
     st.title("The Ultimate Deep Learning Model to read :lips:")  
-    add_vertical_space(1) 
+    
 
     st.info("Note : Our Model is not so mature, yet we've been constantly working on this to improve its abilities, Thus be kind with it :heart: ", icon="📝") 
 
-    add_vertical_space(1) 
+    
 
     gap1,col1, gap2,col2, gap3 = st.columns([1,10,1,10,1])  
     dataset = os.listdir("./Dataset")

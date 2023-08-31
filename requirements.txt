@@ -44,7 +44,7 @@ ibm-cos-sdk-core==2.11.0
 ibm-cos-sdk-s3transfer==2.11.0
 ibm-watson-machine-learning==1.0.316
 idna==3.4
-imageio==2.1.0
+imageio>=2.5.0
 imageio-ffmpeg==0.4.8
 importlib-metadata==6.8.0
 importlib-resources==6.0.0
