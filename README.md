@@ -11,5 +11,13 @@ Go to the WebApp folder and run "streamlit run app.py" to execute the website wi
 
 Under the models folder there contains different model checkpoints in which  "best_model" is the latest training checkpoint this produced maximum effeciency as per our validation. 
 
-NOTE : only 20 Computational Unit Hours are allowed in Lite plan of IBM Watson Machine Learning, Thus kindly use the resource wisely as API rejection occurs once 20CUH per month limit crosses (it takes around 0.5 CUH per request!)   
+NOTE : only 20 Computational Unit Hours are allowed in Lite plan of IBM Watson Machine Learning, Thus kindly use the resource wisely as API rejection occurs once 20CUH per month limit crosses (it takes around 0.5 CUH per request!)
+
+In case of crossing 20CUH limit create your own deployment by following the steps 👇 
+
+To create your own deployment : 
+      1) Create a IBM Watson Studio and IBM Watson machine learning resource (cloud.ibm.com) 
+      2) Under watson_deployment.ipynb alter the credentials accordingly (API KEY, SPACE ID etc.,) and execute the cells 
+This creates a new deployment space in your ibm cloud 
+Also modify the backend.py file (under webApp folder) accordingly to your new credentials (API KEY, DEPLOYMENT ID etc.,)    
 
