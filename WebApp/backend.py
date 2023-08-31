@@ -1,7 +1,5 @@
 import requests 
 
-from ibm_watson_machine_learning import APIClient 
-
 from utils import load_video, num_to_char  
 import tensorflow as tf   
 

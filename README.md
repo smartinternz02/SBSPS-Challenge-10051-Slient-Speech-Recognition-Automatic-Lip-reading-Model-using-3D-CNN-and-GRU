@@ -19,5 +19,9 @@ To create your own deployment :
       1) Create a IBM Watson Studio and IBM Watson machine learning resource (cloud.ibm.com) 
       2) Under watson_deployment.ipynb alter the credentials accordingly (API KEY, SPACE ID etc.,) and execute the cells 
 This creates a new deployment space in your ibm cloud 
-Also modify the backend.py file (under webApp folder) accordingly to your new credentials (API KEY, DEPLOYMENT ID etc.,)    
+Also modify the backend.py file (under webApp folder) accordingly to your new credentials (API KEY, DEPLOYMENT ID etc.,)  
+
+NOTE : In case of dlib build fail, ensure that Microsoft Visual Studio 2019 C++ distributables are properly install 
+      
+      Try installing through conda by : "conda install dlib" 
 
