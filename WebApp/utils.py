@@ -6,7 +6,6 @@ import dlib
 from typing import List 
 import tensorflow as tf 
 
-from matplotlib import pyplot as plt 
 
 # os.environ["TF_CPP_MIN_LOG_LEVEL"] = 3 
 try:

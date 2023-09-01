@@ -2,8 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential 
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, Reshape, SpatialDropout3D, BatchNormalization, TimeDistributed, Flatten
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import ModelCheckpoint, LearningRateScheduler
-from tensorflow.keras.backend import ctc_loss 
+from tensorflow.keras.callbacks import ModelCheckpoint, LearningRateScheduler 
  
 
 # MODEL 
