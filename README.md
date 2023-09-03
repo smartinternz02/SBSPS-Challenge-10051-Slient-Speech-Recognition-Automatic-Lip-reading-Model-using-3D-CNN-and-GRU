@@ -23,5 +23,5 @@ Also modify the backend.py file (under webApp folder) accordingly to your new cr
 
 NOTE : In case of dlib build fail, ensure that Microsoft Visual Studio 2019 C++ distributables are properly install 
       
-      Try installing through conda by : "conda install dlib" 
+      Try installing through conda by : "conda install -c conda-forge dlib" 
 
