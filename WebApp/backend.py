@@ -1,22 +1,28 @@
 import requests 
 
+#from ibm_watson_machine_learning import APIClient 
+
 from utils import load_video, num_to_char  
-import tensorflow as tf   
-
-wml_credentials = {
-    "url":"https://us-south.ml.cloud.ibm.com", 
-    "apikey":"50tndXfHZWBvTOYzo-IG1MOK6LQAsSNObk0XgbdkBvSW" 
-}
-
-DEPLOYMENT_ID = "5015465f-770f-459a-9a06-c071fd198ffd"           # OLD_DEPLOYMENT_ID    #"fee21b8e-09d1-47fe-adb8-8d035b334cf2" 
+import tensorflow as tf 
+from modelutils import LipNet   
 
 
-# NOTE: you must manually set API_KEY below using information retrieved from your IBM Cloud account.
 
-API_KEY = "06OUEcO3iWSP-hDf_yAKIR3lE6MS6RTSmLFlmbtjNDd3"    # NEW_API_KEY       # "50tndXfHZWBvTOYzo-IG1MOK6LQAsSNObk0XgbdkBvSW"   # OLD_API_KEY
+
+
+def decode_prediction(encoded): 
+    decoded = tf.keras.backend.ctc_decode(encoded, input_length = [75], greedy = True)[0][0].numpy() 
+    text = bytes.decode(tf.strings.reduce_join(num_to_char(decoded)).numpy()) 
+    return text 
 
 
 def watson_speech_prediction(frames):   
+
+    # #NOTE: you must manually set API_KEY below using information retrieved from your IBM Cloud account.
+
+    API_KEY =    "wPMJ-Al0hOB8aBfnj2qOd-J_SBi9vhCbV1SzTn-5eSRQ"           #"06OUEcO3iWSP-hDf_yAKIR3lE6MS6RTSmLFlmbtjNDd3"         # "50tndXfHZWBvTOYzo-IG1MOK6LQAsSNObk0XgbdkBvSW"
+
+    DEPLOYMENT_ID =   "af68f1c7-ee8c-4637-b81f-4c3b87e37d0c"      #"5015465f-770f-459a-9a06-c071fd198ffd"                 #"fee21b8e-09d1-47fe-adb8-8d035b334cf2" 
 
     token_response = requests.post('https://iam.cloud.ibm.com/identity/token', data={
         "apikey":API_KEY, 
@@ -71,3 +77,16 @@ def watson_speech_prediction(frames):
             final_output = "Unexpected Error Occured !" 
 
     return final_output, status
+
+
+
+
+def speech_prediction(frames): 
+    try:
+        model = LipNet() 
+        prediction = model.predict(tf.expand_dims(frames, axis = 0))  
+        return decode_prediction(prediction), True   
+    except Exception as e:
+        print(e) 
+        return False, False 
+    
