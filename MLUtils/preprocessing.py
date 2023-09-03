@@ -1,5 +1,5 @@
 import tensorflow as tf 
-from utils import load_data 
+#from utils import load_data 
 from typing import List 
 
 def mappable_function(path:str) ->List[str]:

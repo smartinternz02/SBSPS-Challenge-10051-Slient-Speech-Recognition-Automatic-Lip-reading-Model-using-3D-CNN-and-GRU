@@ -90,5 +90,5 @@ def speech_prediction(frames):
         return decode_prediction(prediction), True   
     except Exception as e:
         print(e) 
-        return False, False 
+        return "Error ", False  
     
