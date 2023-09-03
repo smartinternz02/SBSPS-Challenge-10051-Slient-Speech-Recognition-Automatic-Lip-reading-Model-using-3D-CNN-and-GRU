@@ -82,6 +82,8 @@ def watson_speech_prediction(frames):
 
 
 def speech_prediction(frames): 
+
+    print("\n\nStarting Prediction...\n\n")  
     try:
         model = LipNet() 
         prediction = model.predict(tf.expand_dims(frames, axis = 0))  

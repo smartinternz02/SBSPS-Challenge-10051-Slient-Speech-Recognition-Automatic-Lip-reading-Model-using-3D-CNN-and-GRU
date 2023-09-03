@@ -147,7 +147,7 @@ elif navbar == "LipNet Model":
         #st.write(frames)     
         col2.markdown("""
             <h3 style = "font-size:1.7rem; margin-top:2.5rem;">This is What the Deep Learning Model Sees! </h3> 
-            <h4 style = "font-weight:500;  margin-bottom:2.5rem; ">(No sound, Only some bare black and white pixels ! )</h4> 
+            <h4 style = "font-weight:500;  margin-bottom:2.5rem; ">(No sound, Only some bare black-and-white pixels ! )</h4> 
         """, unsafe_allow_html = True)   
         #frame_index = col2.slider("",0,75,20)     
         #df_frames =  pd.DataFrame([range(0,75), np.array([frames.reshape(1,75,46,140)]) ], columns = ["idx", "frame"])  
@@ -156,7 +156,8 @@ elif navbar == "LipNet Model":
         #col2.plotly_chart(img)     
 
         imageio.mimsave("./temp/anim.gif",frames, format = "gif" ,fps = 20)    
-        col2.image("./temp/anim.gif", use_column_width=True)    
+        col2.image("./temp/anim.gif", use_column_width=True)   
+  
 
         # subcol1, subcol2 =  col2.columns(2)
         
@@ -165,15 +166,16 @@ elif navbar == "LipNet Model":
         #     subcol1.plotly_chart(img, use_container_width = True)      
         #     img = px.imshow(frames[frame_index + 15].reshape(46,140))     
         #     subcol2.plotly_chart(img, use_container_width = True)  
-
+        
+        #  def predict_speech(): 
 
         st.markdown("""
             <h2 class = "center-text" >Prediction From the Model</h2>
-        """,unsafe_allow_html=True)
+            """,unsafe_allow_html=True)
 
         with st.spinner("Predicting..."): 
             # comment the watson_speech_prediction() and uncomment speech_prediction() in case of CUH error 
-            prediction, status =  watson_speech_prediction(frames.tolist())  #speech_prediction(frames) 
+            prediction, status = speech_prediction(frames)  #watson_speech_prediction(frames.tolist()) 
 
         if status:
             st.success("Speech SuccessFully Predicted :sparkles: ") 
@@ -183,8 +185,10 @@ elif navbar == "LipNet Model":
         else:
             st.error(prediction+" Please retry after sometime") 
             st.write("Refer app.py line 175 for fixing this error...")   
-        st.warning("The Model isn't always 100\% Accurate, that's what makes it more humanly :wink: :smiling_face_with_smiling_eyes_and_hand_covering_mouth: ")    
- 
+        st.warning("The Model isn't always 100\% Accurate, that's what makes it more humanly :wink: :smiling_face_with_smiling_eyes_and_hand_covering_mouth: ")   
+
+        #predict_btn = col2.button("Predict Speech", on_click = predict_speech, type = "primary")    
+    
 
 
 elif navbar == "About":
